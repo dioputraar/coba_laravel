@@ -54,7 +54,8 @@
       <li class="nav-item dropdown ms-auto">
         <a class="nav-link" data-toggle="dropdown" href="#">
           {{-- <i class="far fa-bell"></i> --}}
-          Selamat datang, {{ auth()->user()->name }}
+          
+          Selamat datang, {{ $nama = explode(" ", auth()->user()->name)[0]}}
           <span class="ml-2">
             <i class="fas fa-sort-down"></i>
           </span>
@@ -131,25 +132,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/ruang" class="nav-link active">
+                <a href="/ruang" class="nav-link {{ Request::is('ruang/*')? 'active': '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ruang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/jabatan" class="nav-link active">
+                <a href="/jabatan" class="nav-link {{ Request::is('jabatan/*')? 'active': '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="/user" class="nav-link {{ Request::is('user/*')? 'active': '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>User</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="./index3.html" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v3</p>
                 </a>
@@ -173,8 +174,10 @@
             {{-- <h1 class="m-0">Dashboard</h1> --}}
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              {{-- <li class="breadcrumb-item"><a href="#">Home</a></li> --}}
+            <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item">
+                {{-- <a href="">{{ explode(" ", request()->url()) }}</a> --}}
+              </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

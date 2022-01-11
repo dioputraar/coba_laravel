@@ -38,6 +38,14 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
+                    <select name="jabatan_id" id="jabatan_id" class="form-control @error('lantai') is-ivalid @enderror">
+                        <option value="">Jabatan</option>
+                        @foreach ($jabatans as $jabatan)    
+                            <option value="{{ $jabatan->id }}" @if (old('jabatan_id')==$jabatan->id) selected @endif>{{ $jabatan->jabatan }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="input-group mb-3">
                     <input type="text" name="username" class="form-control 
                         @error('username') is-invalid @enderror" placeholder="Username"
                         value="{{ old('username') }}">

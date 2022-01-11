@@ -17,4 +17,8 @@ class Jabatan extends Model
         'creadate',
         'modidate'
     ];
+
+    public function user(){
+        return $this->hasMany(User::class);
+    }
 }
