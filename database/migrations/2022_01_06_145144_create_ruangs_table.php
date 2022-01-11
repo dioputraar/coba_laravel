@@ -14,10 +14,11 @@ class CreateRuangsTable extends Migration
     public function up()
     {
         Schema::create('ruangs', function (Blueprint $table) {
-            $table->id();
+            $table->string('id');
             $table->string('nama');
             $table->integer('kapasitas');
             $table->integer('lantai');
+            $table->string('foto_ruang')->nullable();
             $table->integer('status');
             $table->dateTime('creadate');
             $table->dateTime('modidate');

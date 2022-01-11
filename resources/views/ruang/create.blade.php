@@ -8,8 +8,9 @@
             </div>
             <div class="card-body">
                 <div class="container row">
-                    <form action="/ruang" method="post" class="col-lg-10">
+                    <form action="/ruang" method="post" class="col-lg-10" enctype="multipart/form-data">
                         @csrf
+                        <input name="id" id="id" value="{{ $id}}"type="hidden" readonly>
                         <div class="form-group">
                             <label for="nama">Nama Ruang</label>
                             <input name="nama" id="nama" type="text" class="form-control @error('nama') is-invalid @enderror"
@@ -46,6 +47,17 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="foto_ruang">Foto Ruangan</label>
+                            <img class="img-preview img-fluid mb-3 col-sm-2" >
+                            <input name="foto_ruang" id="foto_ruang" type="file" class="form-control  @error('foto_ruang') is-invalid @enderror"
+                            onchange="previewImage()">
+                            @error('foto_ruang')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
                         <tr>
                             <td>
@@ -63,4 +75,19 @@
             </div>
         </div>
     </div>
+<script>
+ function previewImage() {
+        const image = document.querySelector('#foto_ruang');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+        
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(foto_ruang.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
 @endsection

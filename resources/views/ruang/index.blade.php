@@ -28,6 +28,7 @@
                                 <td>Nama Ruangan</td>
                                 <td class="text-center">Lantai</td>
                                 <td class="text-center">Kapasitas</td>
+                                <td class="text-center">Foto Ruang</td>
                                 <td>Aksi</td>
                             </tr>
                         </thead>
@@ -38,6 +39,15 @@
                                     <td>{{ $ruang->nama }}</td>
                                     <td class="text-center">{{ $ruang->lantai }}</td>
                                     <td class="text-center">{{ $ruang->kapasitas }}</td>
+                                    @if ( $ruang->foto_ruang)
+                                        <td>
+                                            <img src="{{ asset('storage/' . $ruang->foto_ruang) }}" width="150" length="30">
+                                        </td>
+                                    @else
+                                        <td>
+                                            <img src="{{ asset('storage/ruang-images/default.jpg') }}" width="150" length="30">
+                                        </td>
+                                    @endif
                                     <td class="">
                                         <a href="" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat"><i class="far fa-eye"></i></a>
                                         <a href="/ruang/{{ $ruang->id }}/edit" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="far fa-edit"></i></a>
