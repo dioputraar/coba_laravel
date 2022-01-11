@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Handle the incoming request
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -20,7 +21,9 @@ class RegisterController extends Controller
     }
 
     public function index(){
-        return view("register/index");
+        return view("register/index", [
+            "jabatans" => Jabatan::all()
+        ]);
     }
 
     public function store(Request $request){

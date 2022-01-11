@@ -15,7 +15,7 @@ class JabatanFactory extends Factory
     public function definition()
     {
         return [
-            'jabatan' => 'Jabatan. '.mt_rand(1,100),
+            'jabatan' => $this->faker->jobTitle(),
             'status' => 1,
             'creadate' => Carbon::now('Asia/Jakarta'),
             'modidate' => Carbon::now('Asia/Jakarta'),
