@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <div class="container row">
-                    <form action="/ruang/{{ $ruang->id }}" method="post" class="col-lg-10">
+                    <form action="/ruang/{{ $ruang->id }}" method="post" class="col-lg-10" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="form-group">
@@ -48,6 +48,24 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label for="foto_ruang">Foto Ruangan</label>
+                            <input name="oldImage" type="hidden" value="{{ $ruang->foto_ruang }}">
+                            @if ($ruang->foto_ruang)
+                                <img src="{{ asset('storage/' . $ruang->foto_ruang) }}" class="img-preview img-fluid mb-3 col-sm-2 d-block" >  
+                            @else
+                                <img src="{{ asset('storage/ruang-images/default.jpg') }}" class="img-preview img-fluid mb-3 col-sm-2 d-block" >
+                            @endif
+                            
+                            <input name="foto_ruang" id="foto_ruang" type="file" class="form-control  @error('foto_ruang') is-invalid @enderror"
+                            onchange="previewImage()">
+                            @error('foto_ruang')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <tr>
                             <td>
                                 <a href="/ruang" class="btn btn-secondary ">Kembali</a>
@@ -64,4 +82,19 @@
             </div>
         </div>
     </div>
+<script>
+    function previewImage() {
+            const image = document.querySelector('#foto_ruang');
+            const imgPreview = document.querySelector('.img-preview');
+    
+            imgPreview.style.display = 'block';
+            
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(foto_ruang.files[0]);
+    
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 @endsection
