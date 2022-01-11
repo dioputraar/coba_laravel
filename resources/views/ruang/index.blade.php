@@ -24,7 +24,7 @@
                     <table id="datatable" class="table table-resposive">
                         <thead>
                             <tr>
-                                <td>#</td>
+                                <td class="p-sm-0">#</td>
                                 <td>Nama Ruangan</td>
                                 <td class="text-center">Lantai</td>
                                 <td class="text-center">Kapasitas</td>
@@ -39,12 +39,12 @@
                                     <td class="text-center">{{ $ruang->lantai }}</td>
                                     <td class="text-center">{{ $ruang->kapasitas }}</td>
                                     <td class="">
-                                        <a href="" class="btn btn-info"><i class="far fa-eye"></i></a>
-                                        <a href="/ruang/{{ $ruang->id }}/edit" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                        <a href="" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat"><i class="far fa-eye"></i></a>
+                                        <a href="/ruang/{{ $ruang->id }}/edit" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="far fa-edit"></i></a>
                                         <form action="/ruang/{{ $ruang->id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
