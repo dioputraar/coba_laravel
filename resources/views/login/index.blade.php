@@ -43,7 +43,7 @@
         <div class="card-body">
             <p class="login-box-msg">Sign in to start your session</p>
     
-            <form action="/" method="post">
+            <form action="/login" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <input type="text" name="username" class="form-control 

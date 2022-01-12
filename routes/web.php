@@ -18,19 +18,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login/index');
-})->middleware('guest');
-Route::post('/',[LoginController::class, 'authenticate']);
 
-Route::get('/register',[RegisterController::class, 'index']);
+Route::get('/', function() {
+    return view('login/index');
+ }) -> name('login')->middleware('guest');
+
+Route::get('/login', function() {
+    return view('login/index');
+ }) -> name('login')->middleware('guest');
+Route::post('/login',[LoginController::class, 'authenticate']);
+
+Route::get('/register',[RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register',[RegisterController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->middleware('auth');
 
-Route::resource('/ruang', RuangController::class);
-Route::resource('/jabatan', JabatanController::class);
-Route::resource('/user', UserController::class);
+Route::resource('/ruang', RuangController::class)->middleware('auth');
+Route::resource('/jabatan', JabatanController::class)->middleware('auth');
+Route::resource('/user', UserController::class)->middleware('auth');
 
