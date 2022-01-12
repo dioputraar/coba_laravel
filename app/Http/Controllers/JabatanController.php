@@ -15,6 +15,8 @@ class JabatanController extends Controller
      */
     public function index()
     {
+        // return Jabatan::all();
+
         return view('/jabatan/index', [
             "jabatans" => Jabatan::where('status',1)->get() // get data yang statusnya 1/aktif
         ]);

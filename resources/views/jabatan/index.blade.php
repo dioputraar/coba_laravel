@@ -35,12 +35,12 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $jabatan->jabatan }}</td>
                                     <td class="">
-                                        <a href="" class="btn btn-info"><i class="far fa-eye"></i></a>
-                                        <a href="/jabatan/{{ $jabatan->id }}/edit" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                        <a href="" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat"><i class="far fa-eye"></i></a>
+                                        <a href="/jabatan/{{ $jabatan->id }}/edit" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="far fa-edit"></i></a>
                                         <form action="/jabatan/{{ $jabatan->id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
